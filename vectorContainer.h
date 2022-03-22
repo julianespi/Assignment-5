@@ -1,7 +1,14 @@
 #pragma once
 void Vclear(vector<student>& studentInfo)
 {
+    if (studentInfo.size() == 0)
+    {
+        cout << "Empty vector" << endl;
+        return;
+    }
+
     studentInfo.clear();
+    cout << "The vector has been cleared." << endl;
 }
 
 void Vreserve(vector<student>& studentInfo)
@@ -12,9 +19,8 @@ void Vreserve(vector<student>& studentInfo)
 void Vresize(vector<student>& studentInfo)
 {
     studentInfo.resize(inputInteger("Enter the size of the vector you want: ", true));
+    cout << "The vector has been resized to " << studentInfo.size() << " elements." << endl;
 }
-
-
 
 void VreadDataBack(vector<student>& studentInfo)
 {
@@ -46,21 +52,49 @@ void VreadDataBack(vector<student>& studentInfo)
         buffer.setGPA(stod(temp));
         studentInfo.push_back(buffer);
     }
+
+    for (int i = 0; i < studentInfo.size(); i++)
+    {
+        cout << "[" << i << "]: " << studentInfo[i] << endl;
+    }
 }
 
 void Vpop_back(vector<student> studentInfo)
 {
+    if (studentInfo.size() == 0)
+    {
+        cout << "Empty vector" << endl;
+        return;
+    }
+    cout << "Last emlement, " << studentInfo.back() << ", has been removed from the vector." << endl;
     studentInfo.pop_back();
+    cout << "the vector now has " << studentInfo.size() << " elements" << endl;
+    int i = 0;
+    for (auto it = studentInfo.begin(); it != studentInfo.end(); it++)
+    {
+        cout << "[" << i << "]: " << *it << endl;
+        i++;
+    }
 }
 
 void Vfront(vector<student> studentInfo)
 {
-    cout << studentInfo.front() << endl;
+    if (studentInfo.size() == 0)
+    {
+        cout << "Empty vector" << endl;
+        return;
+    }
+    cout << "First element from the vector is: " << studentInfo.front() << endl;
 }
 
 void Vback(vector<student> studentInfo)
 {
-    cout << studentInfo.back() << endl;
+    if (studentInfo.size() == 0)
+    {
+        cout << "Empty vector" << endl;
+        return;
+    }
+    cout << "Last element from the vector is " << studentInfo.back() << endl;
 }
 
 void VreturnAllIndex(vector<student> studentInfo)
@@ -70,53 +104,89 @@ void VreturnAllIndex(vector<student> studentInfo)
 
 void Vbegin(vector<student> studentInfo)
 {
+    if (studentInfo.size() == 0)
+    {
+        cout << "Empty vector" << endl;
+        return;
+    }
     vector<student>::iterator ptr = studentInfo.begin();
-    cout << *ptr << endl;
+    cout << "The iterator referring the first element: " << &*ptr << " (" << *ptr << ")" << endl;
 }
 
 void Vend(vector<student> studentInfo)
 {
-
+    if (studentInfo.size() == 0)
+    {
+        cout << "Empty vector" << endl;
+        return;
+    }
     vector<student>::iterator ptr = studentInfo.end();
-    ptr--; // to set iterator
-    cout << *ptr << endl;
+    ptr--;
+    cout << "The iterator referring to the past-the-end element: " << &*ptr << endl;
 }
 
 void VreturnAll(vector<student> studentInfo)
 {
-    for (auto it = studentInfo.begin(); it != studentInfo.end(); it++)
+    if (studentInfo.size() == 0)
     {
-        cout << *it << endl;
-
+        cout << "Empty vector" << endl;
+        return;
     }
+    for (auto it = studentInfo.begin(); it != studentInfo.end(); it++)
+        cout << &*it << " (" << *it << ")" << endl;
 }
 void VrBegin(vector<student> studentInfo)
 {
+    if (studentInfo.size() == 0)
+    {
+        cout << "Empty vector" << endl;
+        return;
+    }
     auto ptr = studentInfo.rbegin();
-    cout << *ptr << endl;
+    cout << "The iterator referring the reverse first element: " << &*ptr << " (" << *ptr << ")" << endl;
 }
 
 void VrEnd(vector<student> studentInfo)
 {
+    if (studentInfo.size() == 0)
+    {
+        cout << "Empty vector" << endl;
+        return;
+    }
     auto ptr = studentInfo.rend();
     ptr--;
-    cout << *ptr << endl;
+    cout << "The iterator referring to the reverse past-the-end element: " << &*ptr << endl;
 }
 
 void VreturnRAll(vector<student> studentInfo)
 {
+    if (studentInfo.size() == 0)
+    {
+        cout << "Empty vector" << endl;
+        return;
+    }
     for (auto it = studentInfo.rbegin(); it != studentInfo.rend(); it++)
-        cout << *it << endl;
+        cout << &*it << " (" << *it << ")" << endl;
 }
 
 void Verase(vector<student>& studentInfo)
 {
+    if (studentInfo.size() == 0)
+    {
+        cout << "Empty vector" << endl;
+        return;
+    }
     vector<student>::const_iterator itr = studentInfo.begin();
 
 }
 
 void VeraseFromTo(vector<student> studentInfo)
 {
+    if (studentInfo.size() == 0)
+    {
+        cout << "Empty vector" << endl;
+        return;
+    }
     for (auto it = studentInfo.begin(); it != studentInfo.end(); it++)
     {
         studentInfo.erase(it);
@@ -161,7 +231,7 @@ void Vsort(vector<student> studentInfo)
 
 }
 
-int LlistMenuOption()
+int vectorMenuOption()
 {
     cout << endl << "2> vector container";
     cout << endl << "==========================================";
@@ -198,7 +268,7 @@ void vectorContainer()
     vector<student> studentInfo;
     do
     {
-        switch (LlistMenuOption())
+        switch (vectorMenuOption())
         {
         case 0: return; break;
         case 1: Vclear(studentInfo); break;
