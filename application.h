@@ -1,50 +1,50 @@
 #pragma once
-void addInt(vector<int> &listOfInts)
+void addInt(vector<int> &vectorOfInts)
 {
     int newInt = inputInteger("Enter new int: ");
-    listOfInts.push_back(newInt);
+    vectorOfInts.push_back(newInt);
 }
 
-void deleteInt( vector<int> &listOfInts)
+void deleteInt( vector<int> &vectorOfInts)
 {
     int deleteInt = inputInteger("enter an intenget you want to delete: ");
     bool found = false;
-    auto itr = listOfInts.begin();
-    for (int i =0; i < listOfInts.size(); i++)
+    auto itr = vectorOfInts.begin();
+    for (int i =0; i < vectorOfInts.size(); i++)
     {
-        if (listOfInts[i] == deleteInt)
+        if (vectorOfInts[i] == deleteInt)
             found = true;   
     }
-    listOfInts.erase(remove(listOfInts.begin(), listOfInts.end(), deleteInt), listOfInts.end());
+    vectorOfInts.erase(remove(vectorOfInts.begin(), vectorOfInts.end(), deleteInt), vectorOfInts.end());
     if (found == false)
         cout << "vector does not contain " << deleteInt << endl;
 }
 
-void displayInts(vector<int> listOfInts)
+void displayInts(vector<int> vectorOfInts)
 {
-    for (int i = 0; i < listOfInts.size(); i++)
+    for (int i = 0; i < vectorOfInts.size(); i++)
     {
-        cout << listOfInts[i] << " ";
+        cout << vectorOfInts[i] << " ";
     }
 
     cout << endl;
 }
 
-void displayfreqency(vector<int> listOfInts)
+void displayfreqency(vector<int> vectorOfInts)
 {
     map<int, int> frequencies;
     map<int, int>::iterator itr;
 
-    for (int i = 0; i < listOfInts.size(); i++)
+    for (int i = 0; i < vectorOfInts.size(); i++)
     {
-        frequencies.insert(pair <int, int>(listOfInts[i], 0));
+        frequencies.insert(pair <int, int>(vectorOfInts[i], 0));
     }
 
     for (itr = frequencies.begin(); itr != frequencies.end(); ++itr)
     {
-        for (int i = 0; i < listOfInts.size(); i++)
+        for (int i = 0; i < vectorOfInts.size(); i++)
         {
-            if (itr->first == listOfInts[i])
+            if (itr->first == vectorOfInts[i])
             {
                 itr->second += 1;
             }
@@ -58,14 +58,14 @@ void displayfreqency(vector<int> listOfInts)
     for (itr = frequencies.begin(); itr != frequencies.end(); ++itr)
     {
         frecuencyNumber = itr->second;
-        percent = (itr->second / listOfInts.size());
-        cout << setw(20) << itr->first << setw(20) << itr->second << setw(20) << (frecuencyNumber / listOfInts.size()) * 100 << "%" << endl;
+        percent = (itr->second / vectorOfInts.size());
+        cout << setw(20) << itr->first << setw(20) << itr->second << setw(20) << (frecuencyNumber / vectorOfInts.size()) * 100 << "%" << endl;
     }
 }
 
 int applicationMenuOption()
 {
-    cout << endl << "3> Application using Vector and/or List container";
+    cout << endl << "3> Application using Vector and/or vector container";
     cout << endl << "==========================================";
     cout << endl << "1.  Add an integer";
     cout << endl << "2.  Delete an integer";
@@ -82,16 +82,16 @@ int applicationMenuOption()
 
 void application()
 {
-    vector<int> listOfInts;
+    vector<int> vectorOfInts;
     do
     {
         switch (applicationMenuOption())
         {
         case 0: return; break;
-        case 1: addInt(listOfInts); break;
-        case 2: deleteInt(listOfInts); break;
-        case 3: displayInts(listOfInts); break;
-        case 4: displayfreqency(listOfInts); break;
+        case 1: addInt(vectorOfInts); break;
+        case 2: deleteInt(vectorOfInts); break;
+        case 3: displayInts(vectorOfInts); break;
+        case 4: displayfreqency(vectorOfInts); break;
         default: cout << "\t\tERROR - Invalid option. Please re-enter."; break;
         }
         cout << "\n";
