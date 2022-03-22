@@ -1,12 +1,6 @@
 #pragma once
 void Vclear(vector<student>& studentInfo)
 {
-    if (studentInfo.size() == 0)
-    {
-        cout << "Empty vector" << endl;
-        return;
-    }
-
     studentInfo.clear();
     cout << "The vector has been cleared." << endl;
 }
@@ -94,7 +88,7 @@ void Vback(vector<student> studentInfo)
         cout << "Empty vector" << endl;
         return;
     }
-    cout << "Last element from the vector is " << studentInfo.back() << endl;
+    cout << "Last element from the vector is: " << studentInfo.back() << endl;
 }
 
 void VreturnAllIndex(vector<student> studentInfo)
@@ -176,21 +170,25 @@ void Verase(vector<student>& studentInfo)
         cout << "Empty vector" << endl;
         return;
     }
-    vector<student>::const_iterator itr = studentInfo.begin();
-
+    auto ptr = studentInfo.begin();
+    cout << "An element after the begin iterator " << &*ptr << " has been removed. " << endl;
+    studentInfo.erase(ptr);
 }
 
-void VeraseFromTo(vector<student> studentInfo)
+void VeraseFromTo(vector<student> &studentInfo)
 {
     if (studentInfo.size() == 0)
     {
         cout << "Empty vector" << endl;
         return;
     }
-    for (auto it = studentInfo.begin(); it != studentInfo.end(); it++)
-    {
-        studentInfo.erase(it);
-    }
+
+    auto ptr1 = studentInfo.begin();
+    auto ptr2 = studentInfo.end();
+    ptr2--;
+    cout << "All elements starting at begin iterator " << &*ptr1 << " and going up to end iterator " << &*ptr2 << " have been removed." << endl;
+    ptr2 = studentInfo.end();
+    studentInfo.erase(ptr1, ptr2);
 }
 
 void Vinsert(vector<student>& studentInfo)
