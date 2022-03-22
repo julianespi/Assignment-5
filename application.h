@@ -7,6 +7,11 @@ void addInt(vector<int> &vectorOfInts)
 
 void deleteInt( vector<int> &vectorOfInts)
 {
+    if (vectorOfInts.size() == 0)
+    {
+        cout << "vector is empty " << endl;
+        return;
+    }
     int deleteInt = inputInteger("enter an intenget you want to delete: ");
     bool found = false;
     auto itr = vectorOfInts.begin();
@@ -22,6 +27,12 @@ void deleteInt( vector<int> &vectorOfInts)
 
 void displayInts(vector<int> vectorOfInts)
 {
+    if (vectorOfInts.size() == 0)
+    {
+        cout << "vector is empty " << endl;
+        return;
+    }
+        
     for (int i = 0; i < vectorOfInts.size(); i++)
     {
         cout << vectorOfInts[i] << " ";
@@ -32,6 +43,11 @@ void displayInts(vector<int> vectorOfInts)
 
 void displayfreqency(vector<int> vectorOfInts)
 {
+    if (vectorOfInts.size() == 0)
+    {
+        cout << "vector is empty " << endl;
+        return;
+    }
     map<int, int> frequencies;
     map<int, int>::iterator itr;
 
