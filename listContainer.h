@@ -2,10 +2,12 @@
 void clear(list<student> &studentInfo)
 {
     studentInfo.clear();
+    cout << "The list has been cleared." << endl;
 }
 void resize(list<student> &studentInfo)
 {
     studentInfo.resize(inputInteger("Enter the size of the list you want: ", true));
+    cout << "The list has been resized to " << studentInfo.size() << " elements." << endl;
 }
 
 void readDataFront(list<student> &studentInfo)
@@ -31,7 +33,6 @@ void readDataFront(list<student> &studentInfo)
     while (!file1.eof())
     {
         getline(file1, temp, ',');
-
         buffer.setName(temp);
         getline(file1, temp, ',');
         buffer.setGradeLevel(temp);
@@ -39,17 +40,35 @@ void readDataFront(list<student> &studentInfo)
         buffer.setGPA(stod(temp));
         studentInfo.push_front(buffer);
     }
-    
+    cout << "The list now has " << studentInfo.size() << " elements." << endl;
 }
 
 void pop_front(list<student> &studentInfo)
 {
+    if (studentInfo.size() == 0)
+    {
+        cout << "Empty list" << endl;
+        return;
+    }
+    cout << "First emlement, " << studentInfo.front() << ", has been removed from the list." << endl;
     studentInfo.pop_front();
+    cout << "the list now has " << studentInfo.size() << " elements" << endl;
+    int i = 0;
+    for (auto it = studentInfo.begin(); it != studentInfo.end(); it++)
+    {
+        cout << "[" << i << "]: " << *it << endl;
+        i++;
+    }
 }
 
 void front(list<student> studentInfo)
 {
-    cout << studentInfo.front() << endl;
+    if (studentInfo.size() == 0)
+    {
+        cout << "Empty list" << endl;
+        return;
+    }
+    cout << "First element from the list is: " << studentInfo.front() << endl;
 }
 
 void readDataBack(list<student> &studentInfo)
@@ -82,74 +101,135 @@ void readDataBack(list<student> &studentInfo)
         buffer.setGPA(stod(temp));
         studentInfo.push_back(buffer);
     }
+
+    cout << "The list now has " << studentInfo.size() << " elements." << endl;
 }
 
 void pop_back(list<student> studentInfo)
 {
+    if (studentInfo.size() == 0)
+    {
+        cout << "Empty list" << endl;
+        return;
+    }
+    cout << "Last emlement, " << studentInfo.back() << ", has been removed from the list." << endl;
     studentInfo.pop_back();
+    cout << "the list now has " << studentInfo.size() << " elements" << endl;
+    int i = 0;
+    for (auto it = studentInfo.begin(); it != studentInfo.end(); it++)
+    {
+        cout << "[" << i << "]: " << *it << endl;
+        i++;
+    }
 }
 
 void back(list<student> studentInfo)
 {
-    cout << studentInfo.back() << endl;
+    if (studentInfo.size() == 0)
+    {
+        cout << "Empty list" << endl;
+        return;
+    }
+    cout <<"Last element from the list is: "<<  studentInfo.back() << endl;
 }
 
 void begin(list<student> studentInfo)
 {
+    if (studentInfo.size() == 0)
+    {
+        cout << "Empty list" << endl;
+        return;
+    }
     list<student>::iterator ptr = studentInfo.begin();
-        cout << *ptr << endl;
+    cout << "The iterator referring the first element: " << &*ptr << " (" << *ptr << ")" << endl;
 }
 
 void end(list<student> studentInfo)
 {
-
+    if (studentInfo.size() == 0)
+    {
+        cout << "Empty list" << endl;
+        return;
+    }
     list<student>::iterator ptr = studentInfo.end();
-    ptr--; // to set iterator
-    cout << *ptr << endl;
+    ptr--;
+    cout <<"The iterator referring to the past-the-end element: " << &*ptr << endl;
 }
 
 void returnAll(list<student> studentInfo)
 {
-    for (auto it = studentInfo.begin(); it != studentInfo.end(); it++)
+    if (studentInfo.size() == 0)
     {
-        cout << *it << endl;
-
+        cout << "Empty list" << endl;
+        return;
     }
+    for (auto it = studentInfo.begin(); it != studentInfo.end(); it++)
+        cout << &*it << " (" << *it << ")" << endl;
 }
+
 void rBegin(list<student> studentInfo)
 {
+    if (studentInfo.size() == 0)
+    {
+        cout << "Empty list" << endl;
+        return;
+    }
     auto ptr = studentInfo.rbegin();
-    cout << *ptr << endl;
+    cout <<"The reverse iterator pointing to the last element: "<< &*ptr << " (" << *ptr << ")" << endl;
 }
 
 void rEnd(list<student> studentInfo)
 {
+    if (studentInfo.size() == 0)
+    {
+        cout << "Empty list" << endl;
+        return;
+    }
     auto ptr = studentInfo.rend();
     ptr--;
-    cout << *ptr << endl;
+    cout <<"The reverse iterator pointing to the theoretical element preceding the first element in the vector: " << &*ptr << endl;
 }
 
 void returnRAll(list<student> studentInfo)
 {
+    if (studentInfo.size() == 0)
+    {
+        cout << "Empty list" << endl;
+        return;
+    }
     for (auto it = studentInfo.rbegin(); it != studentInfo.rend(); it++)
-        cout << *it << endl;
+        cout << &*it << " (" << *it << ")" << endl;
 }
 
 void erase(list<student> &studentInfo)
 {
-    list<student>::const_iterator itr = studentInfo.begin();
+    if (studentInfo.size() == 0)
+    {
+        cout << "Empty list" << endl;
+        return;
+    }
+    auto ptr = studentInfo.begin();
+    cout << "An element after the begin iterator " << &*ptr << " has been removed. " << endl;
+    studentInfo.erase(ptr);
     
 }
 
-void eraseFromTo(list<student> studentInfo)
+void eraseFromTo(list<student> &studentInfo)
 {
-    for (auto it = studentInfo.begin(); it != studentInfo.end(); it++)
+    if (studentInfo.size() == 0)
     {
-        studentInfo.erase(it);
+        cout << "Empty list" << endl;
+        return;
     }
+    auto ptr1 = studentInfo.begin();
+    auto ptr2 = studentInfo.end();
+    ptr2--;
+    cout << "All elements starting at begin iterator " << &*ptr1 << " and going up to end iterator " << &*ptr2 << " have been removed." << endl;
+    ptr2 = studentInfo.end();
+    studentInfo.erase(ptr1, ptr2);
 }
 
-void inser(list<student> &studentInfo)
+void insert(list<student> &studentInfo)
 {
     student temp;
     temp.setName(inputString("Enter the name of the student: ", true));
@@ -168,6 +248,7 @@ void inser(list<student> &studentInfo)
 
 void swap(list<student> &studentInfo)
 {
+
     list<student> temp;
 
     cout << "list (l2) is initially empty." << endl;
@@ -184,6 +265,11 @@ void swap(list<student> &studentInfo)
 
 void sort(list<student> studentInfo)
 {
+    if (studentInfo.size() == 0)
+    {
+        cout << "Empty list" << endl;
+        return;
+    }
     studentInfo.sort();
 
     for (auto it = studentInfo.begin(); it != studentInfo.end(); it++)
@@ -249,7 +335,7 @@ void listContainer()
         case 14: returnRAll(studentInfo); break;
         case 15: erase(studentInfo); break;
         case 16: eraseFromTo(studentInfo); break;
-        case 17: inser(studentInfo); break;
+        case 17: insert(studentInfo); break;
         case 18: swap(studentInfo); break;
         case 19: sort(studentInfo); break;
         default: cout << "\t\tERROR - Invalid option. Please re-enter."; break;
