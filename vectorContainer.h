@@ -7,7 +7,8 @@ void Vclear(vector<student>& studentInfo)
 
 void Vreserve(vector<student>& studentInfo)
 {
-
+    int cap = inputInteger("Enter the capacity(1..100: ", 1, 100);
+    studentInfo.reserve(cap);
 }
 
 void Vresize(vector<student>& studentInfo)
