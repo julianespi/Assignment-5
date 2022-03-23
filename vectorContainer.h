@@ -94,7 +94,17 @@ void Vback(vector<student> studentInfo)
 
 void VreturnAllIndex(vector<student> studentInfo)
 {
-
+    if (studentInfo.empty() == 0)
+    {
+        cout << "Vector is empty." << endl;
+    }
+    else
+    {
+    cout << "Input a number between 0 and " << studentInfo.size() << ":" << endl;
+    int tempSize = studentInfo.size();
+    int tempInt = inputInteger(" ", 0, tempSize);
+    cout << "Position " << tempInt << " contains " << studentInfo.at(tempInt);
+    }
 }
 
 void Vbegin(vector<student> studentInfo)
