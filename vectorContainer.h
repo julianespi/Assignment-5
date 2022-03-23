@@ -94,12 +94,11 @@ void Vback(vector<student> studentInfo)
 
 void VreturnAllIndex(vector<student> studentInfo)
 {
-    if (studentInfo.empty() == 0)
+    if (studentInfo.size() == 0)
     {
-        cout << "Vector is empty." << endl;
+        cout << "Empty vector" << endl;
+        return;
     }
-    else
-    {
     cout << "Input a number between 0 and " << studentInfo.size() << ":" << endl;
     int tempSize = studentInfo.size();
     int tempInt = inputInteger(" ", 0, tempSize);
