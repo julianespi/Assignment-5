@@ -236,7 +236,15 @@ void Vswap(vector<student>& studentInfo)
 
 void Vsort(vector<student> studentInfo)
 {
-
+    if (studentInfo.size() == 0)
+    {
+        cout << "Empty vector" << endl;
+        return;
+    }
+    sort(studentInfo.begin(), studentInfo.end());
+    cout << "Sorted \n";
+    for (auto content : studentInfo)
+        cout << content << " ";
 }
 
 int vectorMenuOption()
