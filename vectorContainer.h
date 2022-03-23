@@ -1,22 +1,30 @@
 #pragma once
+//precondition: none
+//postcondition: current vector is cleared
 void Vclear(vector<student>& studentInfo)
 {
     studentInfo.clear();
     cout << "The vector has been cleared." << endl;
 }
 
+//precondition: none
+//postcondition: reallocates storage for vector capacity
 void Vreserve(vector<student>& studentInfo)
 {
     int cap = inputInteger("Enter the capacity(1..100: ", 1, 100);
     studentInfo.reserve(cap);
 }
 
+//precondition: none
+//postcondition: vector resized
 void Vresize(vector<student>& studentInfo)
 {
     studentInfo.resize(inputInteger("Enter the size of the vector you want: ", true));
     cout << "The vector has been resized to " << studentInfo.size() << " elements." << endl;
 }
 
+//precondition: none
+//postcondition: attempts to read a file input by user
 void VreadDataBack(vector<student>& studentInfo)
 {
     student buffer;
@@ -54,6 +62,8 @@ void VreadDataBack(vector<student>& studentInfo)
     }
 }
 
+//precondition: none
+//postcondition: removes last element
 void Vpop_back(vector<student> studentInfo)
 {
     if (studentInfo.size() == 0)
@@ -61,7 +71,7 @@ void Vpop_back(vector<student> studentInfo)
         cout << "Empty vector" << endl;
         return;
     }
-    cout << "Last emlement, " << studentInfo.back() << ", has been removed from the vector." << endl;
+    cout << "Last element, " << studentInfo.back() << ", has been removed from the vector." << endl;
     studentInfo.pop_back();
     cout << "the vector now has " << studentInfo.size() << " elements" << endl;
     int i = 0;
@@ -72,6 +82,8 @@ void Vpop_back(vector<student> studentInfo)
     }
 }
 
+//precondition: none
+//postcondition: first element of vector is printed
 void Vfront(vector<student> studentInfo)
 {
     if (studentInfo.size() == 0)
@@ -82,6 +94,8 @@ void Vfront(vector<student> studentInfo)
     cout << "First element from the vector is: " << studentInfo.front() << endl;
 }
 
+//precondition: none
+//postcondition: last element of vector is printed
 void Vback(vector<student> studentInfo)
 {
     if (studentInfo.size() == 0)
@@ -92,6 +106,8 @@ void Vback(vector<student> studentInfo)
     cout << "Last element from the vector is: " << studentInfo.back() << endl;
 }
 
+//precondition: none
+//postcondition: element of vector at position 'n' is printed
 void VreturnAllIndex(vector<student> studentInfo)
 {
     if (studentInfo.size() == 0)
@@ -106,6 +122,8 @@ void VreturnAllIndex(vector<student> studentInfo)
     }
 }
 
+//precondition: none
+//postcondition: indicates first element iterator
 void Vbegin(vector<student> studentInfo)
 {
     if (studentInfo.size() == 0)
@@ -117,6 +135,8 @@ void Vbegin(vector<student> studentInfo)
     cout << "The iterator referring the first element: " << &*ptr << " (" << *ptr << ")" << endl;
 }
 
+//precondition: none
+//postcondition: indicates iterator referring to the past-the-end element
 void Vend(vector<student> studentInfo)
 {
     if (studentInfo.size() == 0)
@@ -129,6 +149,8 @@ void Vend(vector<student> studentInfo)
     cout << "The iterator referring to the past-the-end element: " << &*ptr << endl;
 }
 
+//precondition: none
+//postcondition: displays vector content
 void VreturnAll(vector<student> studentInfo)
 {
     if (studentInfo.size() == 0)
@@ -139,6 +161,9 @@ void VreturnAll(vector<student> studentInfo)
     for (auto it = studentInfo.begin(); it != studentInfo.end(); it++)
         cout << &*it << " (" << *it << ")" << endl;
 }
+
+//precondition: none
+//postcondition: indicates iterator referring to the reverse first element
 void VrBegin(vector<student> studentInfo)
 {
     if (studentInfo.size() == 0)
@@ -150,6 +175,8 @@ void VrBegin(vector<student> studentInfo)
     cout << "The iterator referring the reverse first element: " << &*ptr << " (" << *ptr << ")" << endl;
 }
 
+//precondition: none
+//postcondition: indicates iterator referring to the reverse past-the-end element
 void VrEnd(vector<student> studentInfo)
 {
     if (studentInfo.size() == 0)
@@ -162,6 +189,8 @@ void VrEnd(vector<student> studentInfo)
     cout << "The iterator referring to the reverse past-the-end element: " << &*ptr << endl;
 }
 
+//precondition: none
+//postcondition: displays vector contents in reverse
 void VreturnRAll(vector<student> studentInfo)
 {
     if (studentInfo.size() == 0)
@@ -173,6 +202,8 @@ void VreturnRAll(vector<student> studentInfo)
         cout << &*it << " (" << *it << ")" << endl;
 }
 
+//precondition: none
+//postcondition: erases an element within the vector
 void Verase(vector<student>& studentInfo)
 {
     if (studentInfo.size() == 0)
@@ -185,6 +216,8 @@ void Verase(vector<student>& studentInfo)
     studentInfo.erase(ptr);
 }
 
+//precondition: none
+//postcondition: erases vector contents within a range
 void VeraseFromTo(vector<student> &studentInfo)
 {
     if (studentInfo.size() == 0)
@@ -201,6 +234,8 @@ void VeraseFromTo(vector<student> &studentInfo)
     studentInfo.erase(ptr1, ptr2);
 }
 
+//precondition: none
+//postcondition: inserts new vector entry
 void Vinsert(vector<student>& studentInfo)
 {
     student temp;
@@ -218,6 +253,8 @@ void Vinsert(vector<student>& studentInfo)
     studentInfo.push_back(temp);
 }
 
+//precondition: none
+//postcondition: two vectors' contents are swapped
 void Vswap(vector<student>& studentInfo)
 {
     vector<student> temp;
@@ -234,6 +271,8 @@ void Vswap(vector<student>& studentInfo)
         cout << " vector (l2) now has " << temp.size() << " element(s)." << endl;
 }
 
+//precondition: none
+//postcondition: sorts vector contents
 void Vsort(vector<student> studentInfo)
 {
     if (studentInfo.size() == 0)
@@ -247,6 +286,8 @@ void Vsort(vector<student> studentInfo)
         cout << content << " ";
 }
 
+//precondition: none
+//postcondition: displays menu for vector container
 int vectorMenuOption()
 {
     cout << endl << "2> vector container";
@@ -279,6 +320,8 @@ int vectorMenuOption()
     return options;
 }
 
+//precondition: none
+//postcondition: chooses menu for vector container
 void vectorContainer()
 {
     vector<student> studentInfo;
